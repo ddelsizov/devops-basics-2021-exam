@@ -1,0 +1,7 @@
+<com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
+  <scope>GLOBAL</scope>
+  <id>ci_vagrant</id>
+  <description>Credentials for vagrant</description>
+  <username>vagrant</username>
+  <password>vagrant</password>
+</com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>

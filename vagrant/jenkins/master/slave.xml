@@ -1,0 +1,7 @@
+<com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
+  <scope>GLOBAL</scope>
+  <id>ci_slave</id>
+  <description>Credentials for slave host</description>
+  <username>jenkins</username>
+  <password>secretpassword</password>
+</com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>

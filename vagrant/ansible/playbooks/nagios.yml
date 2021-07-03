@@ -1,0 +1,13 @@
+---
+- name: gather facts
+  hosts: all
+  
+- hosts: CONT
+  become: true
+  roles:
+    - {role: 'sdarwin.nagios', run_nagios_client: true}
+
+- hosts: monitoring-servers
+  become: true
+  roles:
+    - {role: 'sdarwin.nagios', run_nagios_server: true}

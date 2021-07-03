@@ -1,0 +1,38 @@
+---
+- name: Prepare host to S3 transport
+  hosts: localhost
+  gather_facts: true
+  vars:
+    az_resource_group_name: epm-ldi
+    az_storage_account_name: storage11490
+    az_container_name: oracle-java
+    java_download_path: /tmp
+  tasks:
+    - name: Download artifact from Storage Blob
+      azure_rm_storageblob:
+        resource_group: '{{ az_resource_group_name }}'
+        storage_account_name: '{{ az_storage_account_name }}'
+        container: '{{ az_container_name }}'
+        blob: jdk-8u202-windows-x64.exe
+        dest: '{{ java_download_path }}/jdk-8u202-windows-x64.exe'
+
+- name: Install Java 8
+  hosts: all
+  roles:
+    - role: lean_delivery.java
+      java_major_version: 8
+      java_package: jdk
+      java_tarball_install: false
+
+- name: Prepare Jenkins
+  hosts: jenkins_master
+  vars:
+    jenkins2_credentials:
+      slave:
+        type: 'password'
+        id: 'slave_node'
+        username: 'slave'
+        password: 'password'
+        description: 'credentials for slave node'
+  roles:
+    - role: lean_delivery.jenkins

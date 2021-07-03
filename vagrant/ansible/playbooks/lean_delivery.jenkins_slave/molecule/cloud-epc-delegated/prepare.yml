@@ -1,0 +1,25 @@
+---
+- name: Include common prepare
+  import_playbook: ../resources/provisioning/EPC/prepare.yml
+
+- name: Install OpenJDK8
+  hosts: all
+  roles:
+    - role: lean_delivery.java
+      java_major_version: 8
+      java_package: jdk
+      transport: repositories
+      java_tarball_install: false
+
+- name: Prepare Jenkins
+  hosts: jenkins_master
+  vars:
+    jenkins2_credentials:
+      slave:
+        type: 'password'
+        id: 'slave_node'
+        username: 'slave'
+        password: 'password'
+        description: 'credentials for slave node'
+  roles:
+    - role: lean_delivery.jenkins

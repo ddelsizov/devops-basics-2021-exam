@@ -1,0 +1,46 @@
+---
+- name: Install Docker on Slave host
+  become: true
+  hosts: CONT
+  roles:
+    - geerlingguy.docker
+
+  tasks:
+    - name: Add vagrant user to docker group
+      user:
+        name: 'vagrant'
+        groups: docker
+        append: yes
+        
+    - name: Add jenkins user to docker group
+      user:
+        name: 'jenkins'
+        groups: docker
+        append: yes
+    
+    - name: Add nagios user to docker group
+      user:
+        name: 'nagios'
+        groups: docker
+        append: yes
+
+    - name: Create home-network for docker communication ...
+      command: bash -c "sudo docker network create dob-network"
+
+- name: Setup Slave role
+  hosts: CONT
+  
+  vars:
+    master_host: jvm.dob.exam
+    master_port: 8080
+    master_username: ddelsizov
+    master_password: secretpassword
+    slave_linux_jenkins_cred_id: ci_slave
+    slave_linux_jenkins_username: jenkins
+    slave_linux_jenkins_password: secretpassword
+    slave_linux_user_group: jenkins
+    slave_agent_name: slavehost
+    slave_executors_num: 3
+
+  roles:
+    - role: lean_delivery.jenkins_slave

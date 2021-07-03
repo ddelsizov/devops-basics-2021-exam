@@ -1,0 +1,10 @@
+jvm ansible_connection=ssh ansible_host=192.168.120.100 ansible_port=22 ansible_user=vagrant ansible_password=vagrant
+dvm ansible_connection=ssh ansible_host=192.168.120.101 ansible_port=22 ansible_user=vagrant ansible_password=vagrant
+nvm ansible_connection=ssh ansible_host=192.168.120.103 ansible_port=22 ansible_user=vagrant ansible_password=vagrant
+avm ansible_connection=ssh ansible_host=192.168.120.102 ansible_port=22 ansible_user=vagrant ansible_password=vagrant
+
+[monitoring-servers]
+nvm
+
+[CONT]
+dvm

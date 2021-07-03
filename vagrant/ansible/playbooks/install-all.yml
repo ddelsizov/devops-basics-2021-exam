@@ -1,0 +1,4 @@
+---
+- import_playbook: master-playbook.yml
+- import_playbook: slave-playbook.yml
+
