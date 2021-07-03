@@ -9,11 +9,11 @@ We expect automated pull, build, run of three conteinarized applications on the 
 Credit goes to below wonderful ansible galaxy contributers:
 
 Jenkins master and Docker -> 
-https://galaxy.ansible.com/geerlingguy/jenkins
-https://galaxy.ansible.com/geerlingguy/docker
+* https://galaxy.ansible.com/geerlingguy/jenkins
+* https://galaxy.ansible.com/geerlingguy/docker
 
 Jenkins slave node role -> 
-https://galaxy.ansible.com/lean_delivery/jenkins_slave
+* https://galaxy.ansible.com/lean_delivery/jenkins_slave
 
 Nagios -> 
-https://galaxy.ansible.com/sdarwin/nagios
+* https://galaxy.ansible.com/sdarwin/nagios
